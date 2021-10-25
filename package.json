@@ -6,11 +6,12 @@
   "license": "MIT",
   "dependencies": {
     "dotenv": "^10.0.0",
-    "lifeplayjs": "https://github.com/Rizean/LifePlay.js.git",
+    "lifeplayjs": "github:Rizean/LifePlay.js",
     "nodemon": "^2.0.14"
   },
   "scripts": {
     "start": "nodemon --watch src src",
-    "postinstall": "npm update https://github.com/Rizean/LifePlay.js.git"
+    "postinstall": "npm install --no-cache https://github.com/Rizean/LifePlay.js.git",
+    "update:lpjs": "npm install --no-cache https://github.com/Rizean/LifePlay.js.git"
   }
 }

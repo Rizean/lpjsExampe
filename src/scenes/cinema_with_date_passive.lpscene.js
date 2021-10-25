@@ -2,8 +2,8 @@
 const {LPScene} = require('lifeplayjs')
 
 const scene = new LPScene({name: 'cinema_with_date_passive'}, (scene) => {
-    const {Player, CurrentCompanion, random, option, choice, isModEnabled, start, paren, WHAT, narrative} = scene
-    WHAT(['watch_a_movie'])
+    const {Player, CurrentCompanion, random, option, choice, isModEnabled, start, paren, narrative} = scene
+    scene.WHAT(['watch_a_movie'])
     scene.WHERE(['cinema'])
     scene.WHEN([0, 24])
     scene.WHO('none')
