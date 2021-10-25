@@ -1,0 +1,16 @@
+{
+  "name": "lpjsexample",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "author": "Rizean@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "lifeplayjs": "https://github.com/Rizean/LifePlay.js.git",
+    "nodemon": "^2.0.14"
+  },
+  "scripts": {
+    "start": "nodemon --watch src src",
+    "postinstall": "npm update https://github.com/Rizean/LifePlay.js.git"
+  }
+}
