@@ -24,6 +24,5 @@ lpMod.addAction(require('./actions/open_relationship.lpaction'))
 lpMod.addScene(require('./scenes/cinema_with_date_passive.lpScene'))
 lpMod.addScene(require('./scenes/badcop.lpscene'))
 
-
 // ***** Edit Above this line ***** //
 lpMod.writeMod()
