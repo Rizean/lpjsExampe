@@ -32,7 +32,7 @@ const scene = new LPScene({name: 'fantasy_Elf_Cursed'}, (scene) => {
         option([
             {text: "Give in"},
             {text: "Give in"},
-            {text: "Try to resist", condition: () => (Player.intelligence > 70 && Player.karma > 50)},
+            {text: "Try to resist", condition: (Player.intelligence > 70 && Player.karma > 50)},
             {text: "Give in"},
         ])
 
@@ -48,8 +48,8 @@ const scene = new LPScene({name: 'fantasy_Elf_Cursed'}, (scene) => {
             option([
                 {text: "Give in"},
                 {text: "...Help me!"},
-                {text: "...Run", condition: () => (Player.fitness > 50)},
-                {text: "...Revenge", condition: () => (Player.masochist < -20)},
+                {text: "...Run", condition: (Player.fitness > 50)},
+                {text: "...Revenge", condition: (Player.masochist < -20)},
             ])
 
             if (choice(3)) {
@@ -86,7 +86,7 @@ const scene = new LPScene({name: 'fantasy_Elf_Cursed'}, (scene) => {
                 }
 
             } else if (choice(1)) {
-                let Helper = CurrentCompanion
+                let Helper = Player.getCompanion()
                 if (!Helper.isValid()) {
                     Helper = scene.generatePersonTemporary()
                     while (!Helper.isInterestedIn(Player) || Helper.age > 35) {
@@ -156,7 +156,7 @@ const scene = new LPScene({name: 'fantasy_Elf_Cursed'}, (scene) => {
 
                 option([
                     {text: "Give in"},
-                    {text: "...Run", condition: () => (Player.intelligence > 45 && Player.karma > 25)},
+                    {text: "...Run", condition: (Player.intelligence > 45 && Player.karma > 25)},
                 ])
                 if (choice(2)) {
                     scene.narrative("I resisted the elf's magic this time.")
@@ -176,7 +176,7 @@ const scene = new LPScene({name: 'fantasy_Elf_Cursed'}, (scene) => {
                 scene.filter('Solo')
                 scene.sex([Player])
                 Player.perversion += 10
-                let Stranger = CurrentCompanion
+                let Stranger = Player.getCompanion()
                 if (!Stranger.isValid()) {
                     while (!Stranger.isInterestedIn(Player) || Stranger.age > 35) {
                         Stranger = scene.generatePersonTemporary([])
@@ -198,7 +198,6 @@ const scene = new LPScene({name: 'fantasy_Elf_Cursed'}, (scene) => {
                     ])
 
                     if (choice(0)) {
-                        scene.filter()
                         scene.sex([Player, Stranger])
                         Player.perversion += 10
                         Stranger.incest += 10
