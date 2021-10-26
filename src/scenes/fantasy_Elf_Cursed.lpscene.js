@@ -2,7 +2,7 @@
 const {LPScene} = require('lifeplayjs')
 
 const scene = new LPScene({name: 'fantasy_Elf_Cursed'}, (scene) => {
-    const {Player, CurrentCompanion, random, option, choice} = scene
+    const {Player, random, option, choice, narrative} = scene
     scene.WHAT(['all'])
     scene.WHERE(['all', '-home', '-work', '-university:school', '-university:work'])
     scene.WHEN([0, 24])
@@ -27,8 +27,7 @@ const scene = new LPScene({name: 'fantasy_Elf_Cursed'}, (scene) => {
         scene.narrative("I'm getting very hot right now & horny")
 
         eElf.dialogue("Ha, ha, ha.")
-        scene.narrative("That Elf cursed me!")
-        scene.narrative("Trying to force me to masturbate, furiously!.")
+        narrative(["That Elf cursed me!", "Trying to force me to masturbate, furiously!."])
         option([
             {text: "Give in"},
             {text: "Give in"},
@@ -92,17 +91,17 @@ const scene = new LPScene({name: 'fantasy_Elf_Cursed'}, (scene) => {
                     while (!Helper.isInterestedIn(Player) || Helper.age > 35) {
                         Helper = scene.generatePersonTemporary()
                     }
-                    Helper.randomizeHairs()
-                    Helper.randomizeSexy()
-                    Helper.randomizeFace()
+                    Helper.randomize({race: false, hairs: true, sexy: true, face: true})
                     Helper.dress()
                     Helper.show(2)
                 }
 
                 if (!scene.isModEnabled('vin_Incest') && Helper.isRelative()) {
-                    scene.narrative("I can't ask my <Relative.relationship> to help me...")
-                    scene.narrative("I could not fight my urges any longer.")
-                    scene.narrative("And start masturbating right there.")
+                    scene.narrative([
+                        "I can't ask my <Relative.relationship> to help me...",
+                        "I could not fight my urges any longer.",
+                        "And start masturbating right there."
+                    ])
                     scene.filter('Solo')
                     scene.sex([Player])
                     Player.perversion += 10
@@ -142,8 +141,7 @@ const scene = new LPScene({name: 'fantasy_Elf_Cursed'}, (scene) => {
                             Helper.attractiontoplayer += 10
                             Helper.perversion += 10
                         } else {
-                            scene.narrative("<Helper.name> got some cold water and dumped it on me.")
-                            scene.narrative("It did not work...")
+                            scene.narrative(["<Helper.name> got some cold water and dumped it on me.", "It did not work..."])
                             scene.filter('Solo')
                             scene.sex([Player])
                             Player.perversion += 10
@@ -163,16 +161,14 @@ const scene = new LPScene({name: 'fantasy_Elf_Cursed'}, (scene) => {
                     Player.perversion -= 5
                     Player.arousal -= random(0, 90)
                 } else {
-                    scene.narrative("I could not fight my urges any longer.")
-                    scene.narrative("And start masturbating right there.")
+                    scene.narrative(["I could not fight my urges any longer.", "And start masturbating right there."])
                     scene.filter('Solo')
                     scene.sex([Player])
                     Player.perversion += 5
                     scene.narrative("At least no one saw me.")
                 }
             } else {
-                scene.narrative("I could not fight my urges any longer.")
-                scene.narrative("And start masturbating right there.")
+                scene.narrative(["I could not fight my urges any longer.", "And start masturbating right there."])
                 scene.filter('Solo')
                 scene.sex([Player])
                 Player.perversion += 10
@@ -181,9 +177,7 @@ const scene = new LPScene({name: 'fantasy_Elf_Cursed'}, (scene) => {
                     while (!Stranger.isInterestedIn(Player) || Stranger.age > 35) {
                         Stranger = scene.generatePersonTemporary([])
                     }
-                    Stranger.randomizeHairs()
-                    Stranger.randomizeSexy()
-                    Stranger.randomizeFace()
+                    Stranger.randomize({race: false, hairs: true, sexy: true, face: true})
                     Stranger.dress()
                 }
 
